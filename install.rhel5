@@ -14,6 +14,8 @@ if [[ $RHEL != 1 ]]; then
     echo "Not RHEL (or CentOS) 5, cancelling set-up"
     exit 1
 fi
+PLATFORM="RHEL/CentOS 5.x"
+
 
 echo ""
 echo '-----------------------------------------------------------'
@@ -23,6 +25,7 @@ echo ""
 
 echo "Hopefully this will be the last time you type your password"
 sudo ls > /dev/null
+echo ""
 
 read -p "Enter the password you want to use for root mysql user: " MYSQL_PASS
 
