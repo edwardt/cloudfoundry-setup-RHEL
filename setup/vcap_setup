@@ -106,7 +106,7 @@ fi
 if [[ $ROUTER == true || $ALL == true ]]; then
 
     echo "Installing Nginx."
-	yum install -qy nginx
+	yum -qy install nginx
     echo ""
 fi
 
@@ -170,7 +170,7 @@ if [[ $DEA == true || $ALL == true ]]; then
 
     if [[ $JAVA == '' ]]; then
         echo "Installing Sun Java 1.6"
-        yum install java-1.6.0-openjdk 
+        yum -qy install java-1.6.0-openjdk 
     fi
 
     # Node and Erlang frameworks
