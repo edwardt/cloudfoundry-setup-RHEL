@@ -185,7 +185,7 @@ if [[ $DEA == true || $ALL == true ]]; then
     NODE_VERSION=0.4.8
 
     if [[ -d /var/vcap/runtime/node-$NODE_VERSION ]]; then
-        if [[ `node -v | pcregrep -ce $NODE_VERSION` != 1]]; then
+        if [[ `node -v | pcregrep -ce $NODE_VERSION` != 1 ]]; then
             export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERSION:/var/vcap/runtimes/node-$NODE_VERSION/bin
         fi
     fi
