@@ -182,33 +182,42 @@ if [[ $DEA == true || $ALL == true ]]; then
     pushd .
     cd /tmp
 
-    NODE_VERSION=0.4.7
+    NODE_VERSION=0.4.8
 
     if [[ ! `node -v` == 'v'$NODE_VERSION ]]; then
 	wget http://nodejs.org/dist/node-v$NODE_VERSION.tar.gz
 	tar -zxf node-v$NODE_VERSION.tar.gz
 	cd node-v$NODE_VERSION
-	./configure
+	./configure --prefix=/var/vcap/runtimes/node-$NODE_VERSION
 	make
 	make install
+
+    export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERISON:/var/vcap/runtimes/node-$NODE_VERSION/bin
+    echo "# The next line was added by VCAP install"
+    echo "export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERISON:/var/vcap/runtimes/node-$NODE_VERSION/bin" >> ~/.bashrc
 	cd ..
 	rm node-v$NODE_VERSION.tar.gz
 	rm -fr node-v$NODE_VERSION
     fi
 
-    ERLANG_VERSION=R14B02
+#   The only reason to install erlang is for rabbitmq, and since we're installing
+#   that from an rpm built against RHEL... we'll leave this out
 
-    if [ ! -d "/var/vcap/runtimes/erlang$ERLANG_VERSION" ]; then
-        yum -qy install ncurses openssl openssl-devel.$ARCH
+#    ERLANG_VERSION=R14B02
+#
+#    if [ ! -d "/var/vcap/runtimes/erlang$ERLANG_VERSION" ]; then
+#        yum -qy install ncurses openssl openssl-devel.$ARCH
+#
+#        wget http://erlang.org/download/otp_src_$ERLANG_VERSION.tar.gz
+#        tar zxvf otp_src_$ERLANG_VERSION.tar.gz
+#        cd otp_src_$ERLANG_VERSION
+#
+#        ./configure --prefix /var/vcap/runtimes/erlang-$ERLANG_VERSION
+#        make
+#        make install
+#    fi
 
-        wget http://erlang.org/download/otp_src_$ERLANG_VERSION.tar.gz
-        tar zxvf otp_src_$ERLANG_VERSION.tar.gz
-        cd otp_src_$ERLANG_VERSION
-
-        ./configure --prefix /var/vcap/runtimes/erlang-$ERLANG_VERSION
-        make
-        make install
-    fi
+    sudo yum -yq install erlang
     popd
 
     echo "App Platform Support"
@@ -338,8 +347,8 @@ if [[ $RABBITMQ == true || $ALL_SERVICES == true ]]; then
     pushd .
     cd /tmp
     wget http://www.rabbitmq.com/releases/rabbitmq-server/v$RABBITMQ_VERSION/rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
-    yum -qy localinstall rabbitmq-server_$RABBITMQ_VERSION_FULL.noarch.rpm
-    rm rabbitmq-server_$RABBITMQ_VERSION_FULL.noarch.rpm
+    yum -qy localinstall rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
+    rm rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
     popd
 fi
 
