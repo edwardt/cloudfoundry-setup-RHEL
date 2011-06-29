@@ -71,7 +71,7 @@ if [[ $ALL != true ]]; then
 fi
 
 echo "Installing default packages"
-yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH sqlite ruby-sqlite3 sqlite-devel.$ARCH unzip zip
+yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH sqlite sqlite-devel.$ARCH unzip zip
 
 # This is site/setup specific, can be commented out if not needed.
 # export http_proxy='http://192.168.208.20:3128'
@@ -163,7 +163,8 @@ if [[ $DEA == true || $ALL == true ]]; then
 	yum -qy install lsof psmisc
 
     # For Ruby
-	yum -qy install ruby-RMagick
+    #skipping for REE
+	#yum -qy install ruby-RMagick
 
     # Java
 	JAVA=`java -version 2>&1 | pcregrep -oe "[\d\.]{5}_\d+"`
@@ -224,7 +225,7 @@ if [[ $DEA == true || $ALL == true ]]; then
     echo ""
 
     echo "Setting up Ruby System Gems and Support"
-	yum -qy install ruby-devel ruby-mysql mysql-devel.$ARCH ruby-postgres postgres 
+	yum -qy install mysql-devel.$ARCH postgres 
 
     echo "Installing some default system gems"
     echo "gem: --no-rdoc --no-ri" > ~/.gemrc
