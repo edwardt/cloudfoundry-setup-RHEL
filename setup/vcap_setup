@@ -352,7 +352,7 @@ if [[ $RABBITMQ == true || $ALL_SERVICES == true ]]; then
     pushd .
     cd /tmp
     wget http://www.rabbitmq.com/releases/rabbitmq-server/v$RABBITMQ_VERSION/rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
-    yum -qy localinstall rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
+    yum -qy --nogpgcheck localinstall rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
     rm rabbitmq-server-$RABBITMQ_VERSION_FULL.noarch.rpm
     popd
 fi
