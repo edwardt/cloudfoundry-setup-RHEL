@@ -71,8 +71,7 @@ if [[ $ALL != true ]]; then
 fi
 
 echo "Installing default packages"
-    yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH sqlite ruby-sqlite3 sqlite-devel.$ARCH unzip zip
-fi
+yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH sqlite ruby-sqlite3 sqlite-devel.$ARCH unzip zip
 
 # This is site/setup specific, can be commented out if not needed.
 # export http_proxy='http://192.168.208.20:3128'
