@@ -28,6 +28,9 @@ read -p "Enter the password you want to use for root mysql user: " MYSQL_PASS
 
 read -p "Enter the password you want to use for root postgresql user: " POSTGRESQL_PASS
 
+echo "enabling EPEL"
+sudo su -c 'rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm'
+
 echo "Installing dependencies"
 # blind updates are bad, but this could be done later
 # sudo apt-get update
