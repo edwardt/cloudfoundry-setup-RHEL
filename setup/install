@@ -34,7 +34,7 @@ sudo su -c 'rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-re
 echo "Installing dependencies"
 # blind updates are bad, but this could be done later
 # sudo apt-get update
-sudo yum -y install coreutils.$ARCH autoconf curl.$ARCH git.$ARCH ruby.$ARCH bison.$ARCH zlib-devel.$ARCH openssl-devel.$ARCH readline-devel.$ARCH
+sudo yum -y install coreutils.$ARCH autoconf curl.$ARCH git.$ARCH ruby.$ARCH bison.$ARCH zlib-devel.$ARCH openssl-devel.$ARCH readline-devel.$ARCH ruby rubygems
 
 # Overide user-supplied mysql & postgresql passwords with random ones
 # if we know how to do it on this platform
