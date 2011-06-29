@@ -13,8 +13,6 @@ ARCH=`uname -m`
 if [[ $RHEL != 1 ]]; then
     echo "Not RHEL (or CentOS) 5, cancelling set-up"
     exit 1
-else
-    PLATFORM='RHEL/CentOS 5'
 fi
 
 echo ""
@@ -107,6 +105,10 @@ gem install vmc --no-rdoc --no-ri
 
 echo "Setting up vcap."
 cd ~/cloudfoundry/vcap
+
+echo "replacing setup files with RHEL/CentOS equivalents"
+curl https://raw.github.com/sjsadowski/cloudfoundry-setup-RHEL/master/setup/install > setup/install
+curl https://raw.github.com/sjsadowski/cloudfoundry-setup-RHEL/master/setup/vcap_setup > setup/vcap_setup
 
 sudo setup/vcap_setup -a -s -p "$MYSQL_PASS" -q "$POSTGRESQL_PASS"
 
