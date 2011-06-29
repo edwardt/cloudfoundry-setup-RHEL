@@ -13,6 +13,8 @@ ARCH=`uname -m`
 if [[ $RHEL != 1 ]]; then
     echo "Not RHEL (or CentOS) 5, cancelling set-up"
     exit 1
+else
+    PLATFORM='RHEL/CentOS 5'
 fi
 
 echo ""
