@@ -185,19 +185,19 @@ if [[ $DEA == true || $ALL == true ]]; then
     NODE_VERSION=0.4.8
 
     if [[ ! `node -v` == 'v'$NODE_VERSION ]]; then
-	wget http://nodejs.org/dist/node-v$NODE_VERSION.tar.gz
-	tar -zxf node-v$NODE_VERSION.tar.gz
-	cd node-v$NODE_VERSION
-	./configure --prefix=/var/vcap/runtimes/node-$NODE_VERSION
-	make
-	make install
+    	wget http://nodejs.org/dist/node-v$NODE_VERSION.tar.gz
+	    tar -zxf node-v$NODE_VERSION.tar.gz
+    	cd node-v$NODE_VERSION
+	    ./configure --prefix=/var/vcap/runtimes/node-$NODE_VERSION
+    	make
+	    make install
 
-    export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERISON:/var/vcap/runtimes/node-$NODE_VERSION/bin
-    echo "# The next line was added by VCAP install"
-    echo "export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERISON:/var/vcap/runtimes/node-$NODE_VERSION/bin" >> ~/.bashrc
-	cd ..
-	rm node-v$NODE_VERSION.tar.gz
-	rm -fr node-v$NODE_VERSION
+        export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERSION:/var/vcap/runtimes/node-$NODE_VERSION/bin
+        echo "# The next line was added by VCAP install"
+        echo "export PATH=$PATH:/var/vcap/runtime/node-$NODE_VERISON:/var/vcap/runtimes/node-$NODE_VERSION/bin" >> ~/.bashrc
+	    cd ..
+    	rm node-v$NODE_VERSION.tar.gz
+	    rm -fr node-v$NODE_VERSION
     fi
 
 #   The only reason to install erlang is for rabbitmq, and since we're installing
