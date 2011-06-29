@@ -103,6 +103,10 @@ cd ~/cloudfoundry
 
 [ -d vcap ] || git clone $VCAP_REPO
 cd vcap
+
+echo "fixing .gitmodules for RHEL"
+curl https://raw.github.com/sjsadowski/cloudfoundry-setup-RHEL/master/setup/gitmodules > .gitmodules
+
 git submodule update --init
 gem install vmc --no-rdoc --no-ri
 
