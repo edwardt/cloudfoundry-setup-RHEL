@@ -40,7 +40,7 @@ sudo su -c 'rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-re
 echo "Installing dependencies"
 # blind updates are bad, but this could be done later
 # sudo apt-get update
-sudo yum -qy install coreutils.$ARCH autoconf curl.$ARCH git.$ARCH ruby.$ARCH bison.$ARCH zlib-devel.$ARCH openssl-devel.$ARCH readline-devel.$ARCH gcc gcc-c++
+sudo yum -qy install coreutils.$ARCH autoconf curl.$ARCH git.$ARCH bison.$ARCH zlib-devel.$ARCH openssl-devel.$ARCH readline-devel.$ARCH gcc gcc-c++
 
 echo "Installing ruby enterprise edition to /opt (repo version too low)"
 curl http://rubyenterpriseedition.googlecode.com/files/ruby-enterprise-1.8.7-2011.03.tar.gz > ree.tar.gz
