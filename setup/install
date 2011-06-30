@@ -152,7 +152,7 @@ fi
 
 echo "Restarting nginx"
 cd ~/cloudfoundry/vcap
-curl curl https://raw.github.com/sjsadowski/cloudfoundry-setup-RHEL/master/nginx.conf.rhel5
+curl https://raw.github.com/sjsadowski/cloudfoundry-setup-RHEL/master/nginx/nginx.conf.rhel5 > nginx.conf.rhel5
 sudo mv nginx.conf.rhel5 /etc/nginx/nginx.conf
 sudo /sbin/service nginx restart
 
