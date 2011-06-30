@@ -74,7 +74,7 @@ if [[ $ALL != true ]]; then
 fi
 
 echo "Installing default packages"
-yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH unzip zip
+yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH unzip zip inotify-tools
 
 echo "Installing updated sqlite packages from atomic"
 wget http://www6.atomicorp.com/channels/atomic/centos/5EL/x86_64/RPMS/sqlite-devel-3.7.0.1-1.el5.art.$ARCH.rpm
