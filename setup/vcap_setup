@@ -74,7 +74,14 @@ if [[ $ALL != true ]]; then
 fi
 
 echo "Installing default packages"
-yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH sqlite sqlite-devel.$ARCH unzip zip
+yum -qy install wget curl bison zlib openssl-devel.$ARCH readline-devel.$ARCH libxml2 libxml2-devel.$ARCH libxslt libxslt-devel.$ARCH unzip zip
+
+echo "Installing updated sqlite packages from atomic"
+wget http://www6.atomicorp.com/channels/atomic/centos/5EL/x86_64/RPMS/sqlite-devel-3.7.0.1-1.el5.art.$ARCH.rpm
+wget http://www6.atomicorp.com/channels/atomic/centos/5EL/x86_64/RPMS/sqlite-3.7.0.1-1.el5.art.$ARCH.rpm
+yum -qy --nogpgcheck localinstall sqlite-3.7.0.1-1.el5.art.$ARCH.rpm
+yum -qy --nogpgcheck localinstall sqlite-devel-3.7.0.1-1.el5.art.$ARCH.rpm
+rm -f sqlite*rpm
 
 # This is site/setup specific, can be commented out if not needed.
 # export http_proxy='http://192.168.208.20:3128'
